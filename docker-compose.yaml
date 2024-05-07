@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # back:
+  #   build:
+  #     context: ./back
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:80" # Adjust port mapping as needed
+  #   volumes:
+  #     - ./back:/app # Mount backend code into the container
+  #   depends_on:
+  #     - ffmpeg
+
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3100:80"
+      - "3200:80"
+      - "3300:80"
+    volumes:
+      - ./front:/app/front # Mount frontend code into the container
+
+  # ffmpeg:
+  #   image: jrottenberg/ffmpeg:latest
+  #   volumes:
+  #     - ./ffmpeg:/ffmpeg # Mount FFmpeg configuration or files if needed
